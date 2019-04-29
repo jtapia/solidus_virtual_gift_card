@@ -17,7 +17,7 @@ es-MX:
   spree:
     immediately: "Inmediatamente"
     admin:
-      gift_cards_details: "Detalles de la tarjeta de regalo"
+      order_number: "Número de Orden"
       gift_cards:
         deactivate: "Desactivar"
         deactivate: "Desactivado"
@@ -58,6 +58,8 @@ es-MX:
           unable_to_reimburse_gift_card: "No se puede reembolsar la tarjeta de regalo"
       tab:
         gift_cards: "Tarjetas de Regalo"
+      store_credits:
+        gift_card_originator: "Tarjetas de Regalo - Orden #%{order_number}"
     gift_card_mailer:
       gift_card_email:
         dear_customer: "Estimado cliente"
