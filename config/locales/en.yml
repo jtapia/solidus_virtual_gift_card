@@ -1,23 +1,54 @@
----
 en:
+  activerecord:
+    attributes:
+      spree/virtual_gift_card:
+        amount: "Amount"
+        currency: "Currency"
+        redemption_code: "Redemption Code"
+        redeemed_at: "Redeemed At"
+        recipient_name: "Recipient Name"
+        recipient_email: "Recipient Email"
+        gift_message: "Gift Message"
+        purchaser_name: "Purchaser Name"
+    models:
+      spree/virtual_gift_card:
+        one: "Gift Card"
+        other: "Gift Cards"
   spree:
+    immediately: "Immediately"
     admin:
       gift_cards:
         convert_product_label: "Turn this product into a gift card?"
+        deactivate: "Deactivate"
+        deactivate: "Deactivated"
+        deactivate_confirmation: "Are you sure you want to deactivate the gift card?"
+        deactivated_at: "Deactivated at"
         deactivated_gift_card: "Gift card deactivated"
+        details: "Details"
+        edit_details: "Edit Details"
         editing_gift_card: "Editing Gift Card"
+        email_last_sent_at: "Email last sent at"
         gift_card: "Gift Card"
         gift_card_details: "Gift Card Details"
         gift_card_originator: "Gift Card - Order #%{order_number}"
         gift_card_updated: "Gift card updated!"
         gift_message: "Gift Message"
+        listing_gift_cards: "Listing Gift Cards"
+        lookup_gift_card: "Lookup Gift Card"
+        purchased_at: "Purchased at"
+        purchased_by: "Purchased by"
         purchaser_name: "Purchaser Name"
         recipient_email: "Recipient Email"
         recipient_name: "Recipient Name"
         redeem: "Redeem"
         redeem_gift_card: "Redeem Gift Card"
-        redeemed_gift_card: "Redeemed Gift Card"
         redemption_code: "Redemption Code"
+        redeemed_at: "Redeemed at"
+        redeemed_by: "Redeemed by"
+        redeemed_gift_card: "Redeemed Gift Card"
+        send_email: "Send email now"
+        send_email_at: "Send email at"
+        send_email_confirmation: "Any changes that have not been updated will not send"
         errors:
           not_found: "Gift card was not found"
           please_try_again: "Please try again"
@@ -32,4 +63,3 @@ en:
         your_gift_card_code: "Here is your gift card code"
         gift_card_code: "Gift card code: %{code}"
         subject: "Your gift card code"
-    listing_gift_cards: "Listing Gift Cards"

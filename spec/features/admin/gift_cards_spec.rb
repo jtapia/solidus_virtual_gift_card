@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe 'Gift Cards', :type => :feature, :js => true do
+describe 'Gift Cards', type: :feature, js: true do
   stub_authorization!
 
   let(:admin_user) { create(:admin_user) }
@@ -18,11 +20,9 @@ describe 'Gift Cards', :type => :feature, :js => true do
     let(:new_gift_message) { "Sweaters!" }
 
     it "can edit recipient information and send email date" do
-      visit spree.cart_admin_order_path(order)
+      visit spree.edit_admin_order_path(order)
 
-      within ".line-item-name" do
-        click_link("Edit Details")
-      end
+      click_link("(Edit Details)")
 
       fill_in "virtual_gift_card_recipient_name", with: new_recipient_name
       fill_in "virtual_gift_card_recipient_email", with: new_recipient_email
@@ -43,12 +43,12 @@ describe 'Gift Cards', :type => :feature, :js => true do
   end
 
   describe "lookup a gift card" do
-    let(:gift_card) { create(:redeemable_virtual_gift_card,
+    let(:gift_card) {
+                      create(:redeemable_virtual_gift_card,
                              recipient_name: "Daeva",
-                             recipient_email: 'dog@example.com',
-                            )
+                             recipient_email: 'dog@example.com')
     }
-    let(:other_gift_card) { create(:redeemable_virtual_gift_card)}
+    let(:other_gift_card) { create(:redeemable_virtual_gift_card) }
     let(:order) { gift_card.line_item.order }
 
     it "can lookup gift card by recipient email" do

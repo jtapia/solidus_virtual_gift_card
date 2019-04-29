@@ -1,0 +1,66 @@
+es-MX:
+  activerecord:
+    attributes:
+      spree/virtual_gift_card:
+        amount: "Cantidad"
+        currency: "Moneda"
+        redemption_code: "Codigo de canjeo"
+        redeemed_at: "Canjeado en"
+        recipient_name: "Nombre del Remitente"
+        recipient_email: "Email del Destinatario"
+        gift_message: "Mensaje de la Tarjeta de Regalo"
+        purchaser_name: "Nombre del comprador"
+    models:
+      spree/virtual_gift_card:
+        one: "Tarjeta de Regalo"
+        other: "Tarjetas de Regalo"
+  spree:
+    immediately: "Inmediatamente"
+    admin:
+      gift_cards_details: "Detalles de la tarjeta de regalo"
+      gift_cards:
+        deactivate: "Desactivar"
+        deactivate: "Desactivado"
+        deactivate_confirmation: "¿Seguro que quieres desactivar la tarjeta regalo?"
+        convert_product_label: "¿Convertir este producto en una tarjeta de regalo?"
+        deactivated_at: "Desactivado en"
+        deactivated_gift_card: "Tarjeta de Regalo desactivada"
+        details: "Detalles"
+        edit_details: "Editar Detalles"
+        editing_gift_card: "Editando Tarjeta de Regalo"
+        email_last_sent_at: "Email enviado por última vez"
+        gift_card: "Tarjeta de Regalo"
+        gift_card_details: "Detalles de la Tarjeta de Regalo"
+        gift_card_originator: "Tarjeta de Regalo - Orden #%{order_number}"
+        gift_card_updated: "Tarjeta de Regalo actualizada!"
+        gift_message: "Mensaje de la Tarjeta de Regalo"
+        listing_gift_cards: "Listado de Tarjetas de Regalo"
+        lookup_gift_card: "Buscar tarjeta de regalo"
+        purchased_at: "Comprado en"
+        purchased_by: "Comprado por"
+        purchaser_name: "Nombre del comprador"
+        recipient_email: "Email del Destinatario"
+        recipient_name: "Nombre del Remitente"
+        redeem: "Canjear"
+        redeem_gift_card: "Canjear Tarjeta de Regalo"
+        redeemed_gift_card: "Tarjeta de Regalo canjeada"
+        redeemed_at: "Canjeado en"
+        redeemed_by: "Canjeado por"
+        redemption_code: "Codigo de canjeo"
+        send_email: "Enviar Email"
+        send_email_at: "Enviar correo electrónico a"
+        send_email_confirmation: "Cualquier cambio que no haya sido actualizado no será enviado"
+        errors:
+          not_found: "No se encontró la tarjeta de regalo"
+          please_try_again: "Por favor, inténtalo de nuevo"
+          unable_to_deactivate_gift_card: "No se puede desactivar la tarjeta de regalo"
+          unable_to_redeem_gift_card: "No se puede canjear la tarjeta de regalo"
+          unable_to_reimburse_gift_card: "No se puede reembolsar la tarjeta de regalo"
+      tab:
+        gift_cards: "Tarjetas de Regalo"
+    gift_card_mailer:
+      gift_card_email:
+        dear_customer: "Estimado cliente"
+        your_gift_card_code: "Aquí está el código de su tarjeta de regalo"
+        gift_card_code: "Código de tarjeta de regalo: %{code}"
+        subject: "Su código de tarjeta de regalo"
