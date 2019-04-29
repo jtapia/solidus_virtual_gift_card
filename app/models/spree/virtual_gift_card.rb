@@ -123,7 +123,11 @@ module Spree
     def cancel_and_reimburse_inventory_unit
       cancellation = Spree::OrderCancellations.new(line_item.order)
       cancellation.cancel_unit(inventory_unit)
-      !!cancellation.reimburse_units([inventory_unit], created_by: order.user)
+      if SolidusSupport.backend_available? && SolidusSupport.solidus_gem_version < Gem::Version.new('2.8.x')
+        !!cancellation.reimburse_units([inventory_unit])
+      else
+        !!cancellation.reimburse_units([inventory_unit], created_by: order.user)
+      end
     end
 
     def generate_unique_redemption_code
