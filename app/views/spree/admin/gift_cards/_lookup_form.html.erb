@@ -1,5 +1,5 @@
 <% content_for :table_filter_title do %>
-  <%= Spree.t(:search) %>
+  <%= I18n.t(:'spree.search') %>
 <% end %>
 
 <% content_for :table_filter do %>
@@ -7,25 +7,25 @@
     <%= search_form_for @search, url: admin_gift_cards_path(@search) do |f| %>
       <div class="alpha four columns">
         <div class="field">
-          <%= label_tag nil, "Redemption Code" %>
+          <%= label_tag nil, :redemption_code %>
           <%= f.text_field :redemption_code_cont, size: 27 %>
         </div>
       </div>
       <div class="four columns">
         <div class="field">
-          <%= label_tag nil, "Recipient Email" %>
+          <%= label_tag nil, :recipient_email %>
           <%= f.text_field :recipient_email_cont, size: 25 %>
         </div>
       </div>
       <div class="four columns">
         <div class="field">
-          <%= label_tag nil, "Order Number" %>
+          <%= label_tag nil, I18n.t(:'spree.order_number') %>
           <%= f.text_field :line_item_order_number_cont, size: 25 %>
         </div>
       </div>
       <div class="omega four columns">
         <div class="field">
-          <%= label_tag nil, "Send Date" %>
+          <%= label_tag nil, :sent_at %>
           <%= f.text_field :sent_at_or_send_email_at_is, class: 'datepicker', size: 25 %>
         </div>
       </div>
@@ -33,7 +33,7 @@
       <div class="clearfix"></div>
 
       <div class="actions filter-actions">
-        <%= button 'Lookup Gift Card', 'search' %>
+        <%= f.submit I18n.t(:'spree.admin.gift_cards.lookup_gift_card') %>
       </div>
     <% end %>
   </div>

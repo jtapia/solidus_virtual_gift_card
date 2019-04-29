@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-  <%= Spree.t(:listing_gift_cards) %>
+  <%= I18n.t(:'spree.admin.gift_cards.listing_gift_cards') %>
 <% end %>
 
 <%= render partial: 'lookup_form' %>
@@ -10,14 +10,14 @@
   <table class="index">
     <thead>
       <tr>
-        <th class="align-center">Redemption Code</th>
-        <th class="align-center">Amount</th>
-        <th class="align-center">Purchased by</th>
-        <th class="align-center">Purchased at</th>
-        <th class="align-center">Recipient Email</th>
-        <th class="align-center">Date Sent</th>
-        <th class="align-center">Redeemed by</th>
-        <th class="align-center">Redeemed at</th>
+        <th class="align-center"><%= Spree::VirtualGiftCard.human_attribute_name(:redemption_code) %></th>
+        <th class="align-center"><%= Spree::VirtualGiftCard.human_attribute_name(:amount) %></th>
+        <th class="align-center"><%= I18n.t(:'spree.admin.gift_cards.purchased_by') %></th>
+        <th class="align-center"><%= I18n.t(:'spree.admin.gift_cards.purchased_at') %></th>
+        <th class="align-center"><%= Spree::VirtualGiftCard.human_attribute_name(:recipient_email) %></th>
+        <th class="align-center"><%= Spree::VirtualGiftCard.human_attribute_name(:sent_at) %></th>
+        <th class="align-center"><%= I18n.t(:'spree.admin.gift_cards.redeemed_by') %></th>
+        <th class="align-center"><%= I18n.t(:'spree.admin.gift_cards.redeemed_at') %></th>
       </tr>
     </thead>
 
