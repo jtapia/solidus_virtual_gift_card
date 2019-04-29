@@ -1,4 +1,6 @@
-class SetRedeemableTrueOnVirtualGiftCards < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class SetRedeemableTrueOnVirtualGiftCards < SolidusSupport::Migration[4.2]
   def up
     Spree::VirtualGiftCard.find_each do |gift_card|
       gift_card.update_attributes!(redeemable: true)
@@ -6,6 +8,6 @@ class SetRedeemableTrueOnVirtualGiftCards < ActiveRecord::Migration
   end
 
   def down
-    #noop
+    # noop
   end
 end
