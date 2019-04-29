@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Spree::GiftCardMailer, type: :mailer do
   context '#gift_card_email' do
+    let(:store) { create(:store, default: true) }
     let(:gift_card) { create(:redeemable_virtual_gift_card) }
 
     subject { Spree::GiftCardMailer.gift_card_email(gift_card) }
