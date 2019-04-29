@@ -1,10 +1,13 @@
-module Spree
-  module GiftCards::InventoryUnitConcerns
-    extend ActiveSupport::Concern
+# frozen_string_literal: true
 
-    included do
-      has_one :gift_card, class_name: 'Spree::VirtualGiftCard'
+module Spree
+  module GiftCards
+    module InventoryUnitConcerns
+      extend ActiveSupport::Concern
+
+      included do
+        has_one :gift_card, class_name: 'Spree::VirtualGiftCard'
+      end
     end
   end
 end
-

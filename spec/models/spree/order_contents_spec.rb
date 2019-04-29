@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Spree::OrderContents do
@@ -60,8 +62,9 @@ describe Spree::OrderContents do
 
           context "with invalid date" do
             let(:send_email_at) { "12/14/2020" }
+
             it "errors" do
-             expect{ subject }.to raise_error Spree::GiftCards::OrderContentsConcerns::GiftCardDateFormatError
+              expect{ subject }.to raise_error(Spree::GiftCards::OrderContentsConcerns::GiftCardDateFormatError)
             end
           end
         end
@@ -71,7 +74,8 @@ describe Spree::OrderContents do
         let(:quantity) { 2 }
 
         it "creates two gift cards" do
-          expect { subject }.to change { Spree::VirtualGiftCard.count }.by(2)
+          subject
+          expect(Spree::VirtualGiftCard.count).to eq 2
         end
       end
 
@@ -81,8 +85,8 @@ describe Spree::OrderContents do
 
           it "adds to the existing gift card" do
             expect(order.line_items.count).to be(1)
-            new_line_item = subject
             expect(order.reload.line_items.count).to be(1)
+            subject
             expect(@line_item.reload.gift_cards.count).to be(2)
           end
         end
@@ -118,7 +122,8 @@ describe Spree::OrderContents do
 
     context "with a non gift card product" do
       it "does not create a gift card" do
-        expect { subject }.to_not change { Spree::VirtualGiftCard.count }
+        subject
+        expect(Spree::VirtualGiftCard.count).to eq 0
       end
     end
   end
@@ -229,7 +234,7 @@ describe Spree::OrderContents do
 
       let(:update_params) do
         {
-          line_items_attributes: { id: @line_item.id, quantity: quantity, options: {}}
+          line_items_attributes: { id: @line_item.id, quantity: quantity, options: {} }
         }
       end
 

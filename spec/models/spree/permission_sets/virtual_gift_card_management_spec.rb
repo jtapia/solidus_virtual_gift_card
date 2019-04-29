@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require 'spec_helper'
 
@@ -18,4 +19,3 @@ describe Spree::PermissionSets::VirtualGiftCardManagement do
     it { should_not be_able_to(:manage, Spree::VirtualGiftCard) }
   end
 end
-
