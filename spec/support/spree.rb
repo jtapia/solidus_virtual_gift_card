@@ -7,6 +7,7 @@ require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
 require 'spree/api/testing_support/helpers'
 require 'spree/api/testing_support/setup'
+require 'cancan/matchers'
 
 RSpec.configure do |config|
   config.include Spree::TestingSupport::ControllerRequests, type: :controller
