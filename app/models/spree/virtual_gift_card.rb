@@ -115,7 +115,7 @@ module Spree
 
     def send_email
       Spree::GiftCardMailer.gift_card_email(self).deliver_later
-      update_attributes!(sent_at: DateTime.now)
+      update_attributes!(sent_at: Date.today)
     end
 
     private

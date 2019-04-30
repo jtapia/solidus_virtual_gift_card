@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Deface::Override.new(
-  virtual_path: 'spree/admin/orders/_line_items_edit_form',
-  name: 'add_gift_cards_to_admin_line_items',
-  insert_bottom: '.line-item-name',
+  virtual_path: 'spree/admin/orders/confirm/_shipment_manifest',
+  name: 'add_gift_cards_to_admin_confirm',
+  insert_bottom: '.item-name',
   partial: 'spree/admin/orders/cart_gift_card_details',
 )
 
