@@ -1,89 +1,32 @@
-<script async='true'>GiftCards.setAdminDatepicker()</script>
-
-<% content_for :page_title do %>
-  <%= I18n.t(:'spree.admin.gift_cards.editing_gift_card') %>
-<% end %>
-
 <%= render partial: 'spree/admin/shared/order_tabs', locals: { current: '' } %>
 
-<%= form_for @gift_card, url: admin_order_gift_card_path(@order, @gift_card) do |f| %>
-  <fieldset>
-    <legend align='center'><%= I18n.t(:'spree.admin.gift_cards.gift_card_details') %></legend>
-    <div class='row'>
-      <label><%= I18n.t(:'spree.amount') %>:&nbsp;</label>
-      <%= @gift_card.formatted_amount %>
-    </div>
+<% admin_breadcrumb("#{I18n.t(:'spree.admin.gift_cards.editing_gift_card')}") %>
 
-    <div class='row'>
-      <label><%= I18n.t(:'spree.admin.gift_cards.redemption_code') %>:&nbsp;</label>
-      <%= @gift_card.redemption_code %>
-    </div>
-
-    <div class='row'>
-      <div class='alpha twelve columns'>
-        <%= f.field_container :recipient_name do %>
-          <%= f.label :recipient_name, I18n.t(:'spree.admin.gift_cards.recipient_name') %> <br />
-          <%= f.text_field :recipient_name, class: 'fullwidth' %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class='alpha twelve columns'>
-        <%= f.field_container :recipient_email do %>
-          <%= f.label :recipient_email, I18n.t(:'spree.admin.gift_cards.recipient_email') %> <br />
-          <%= f.text_field :recipient_email, class: 'fullwidth' %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class='alpha twelve columns'>
-        <%= f.field_container :purchaser_name do %>
-          <%= f.label :purchaser_name, I18n.t(:'spree.admin.gift_cards.purchaser_name') %> <br />
-          <%= f.text_field :purchaser_name, class: 'fullwidth' %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class='alpha twelve columns'>
-        <%= f.field_container :gift_message do %>
-          <%= f.label :gift_message, I18n.t(:'spree.admin.gift_cards.gift_message') %> <br />
-          <%= f.text_area :gift_message, class: 'fullwidth', maxlength: '140' %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class='alpha twelve columns'>
-        <% if @gift_card.sent_at %>
-          <div class='last-email-sent'>
-            <%= I18n.t(:'spree.admin.gift_cards.email_last_sent_at') %>: <%= @gift_card.formatted_sent_at %>
-          </div>
-        <% else %>
-          <%= f.field_container :send_email_at do %>
-          <%= f.label :send_email_at, I18n.t(:'spree.admin.gift_cards.send_email_at') %> <br />
-          <%= f.text_field :send_email_at, class: 'datepicker datepicker-from giftcard-datepicker' %>
-          <% end %>
-        <% end %>
-
-        <% if @gift_card.deactivated_at %>
-          <div class='deactivated-at'>
-            <%= I18n.t(:'spree.admin.gift_cards.deactivated_at') %>: <%= @gift_card.formatted_deactivated_at %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-    <%= render partial: 'spree/admin/shared/edit_resource_links', locals: { collection_url: edit_admin_order_path(@order) } %>
-  </fieldset>
+<% content_for :page_actions do %>
+  <li>
+    <%= link_to t('spree.admin.back_to_order_details'), url_for([:edit, :admin, @order]), class: 'btn btn-primary' %>
+  </li>
 <% end %>
 
+<%= render partial: 'spree/shared/error_messages', locals: { target: @gift_card } %>
 
 <% if @gift_card.can_deactivate? && can?(:deactivate, @gift_card) %>
-  <div class='form-buttons filter-actions actions gift-card-actions' data-hook='buttons'>
-      <%= button_link_to I18n.t(:'spree.admin.gift_cards.send_email'), send_email_admin_order_gift_card_path(@order, @gift_card), method: 'put', data: { confirm: I18n.t(:'spree.admin.gift_cards.send_email_confirmation') } %>
-      <%= button_link_to I18n.t(:'spree.admin.gift_cards.deactivate'), deactivate_admin_order_gift_card_path(@order, @gift_card), method: 'put', data: { confirm: I18n.t(:'spree.admin.gift_cards.deactivate_confirmation') } %>
+  <div class='filter-actions actions gift-card-actions' data-hook='buttons'>
+    <ul class='page-actions inline-menu mb-4'>
+      <li>
+        <%= button_to I18n.t(:'spree.admin.gift_cards.send_email'), send_email_admin_order_gift_card_path(@order, @gift_card), class: 'button', method: 'put', data: { confirm: I18n.t(:'spree.admin.gift_cards.send_email_confirmation') } %>
+      </li>
+      &nbsp;
+      <li>
+        <%= button_to I18n.t(:'spree.admin.gift_cards.deactivate'), deactivate_admin_order_gift_card_path(@order, @gift_card), class: 'button', method: 'put', data: { confirm: I18n.t(:'spree.admin.gift_cards.deactivate_confirmation') } %>
+      </li>
+    </ul>
   </div>
+<% end %>
+
+<%= form_for @gift_card, url: admin_order_gift_card_path(@order, @gift_card) do |f| %>
+  <fieldset class='no-border-top'>
+    <%= render partial: 'form', locals: { f: f } %>
+    <%= render partial: 'spree/admin/shared/edit_resource_links', locals: { collection_url: edit_admin_order_path(@order) } %>
+  </fieldset>
 <% end %>

@@ -1,0 +1,68 @@
+<div data-hook='admin_gift_card_form_fields'>
+  <fieldset>
+    <div data-hook='amount'>
+      <%= f.label :amount %>:&nbsp;
+      <%= @gift_card.formatted_amount %>
+    </div>
+
+    <div data-hook='redemption_code'>
+      <%= f.label :redemption_code %>:&nbsp;
+      <%= @gift_card.redemption_code %>
+    </div>
+
+    <% if @gift_card.sent_at %>
+      <div data-hook='email_last_sent_at' class='last-email-sent'>
+        <%= f.label :email_last_sent_at %>:&nbsp;
+        <%= @gift_card.formatted_sent_at %>
+      </div>
+    <% end %>
+
+    <% if @gift_card.deactivated_at %>
+      <div data-hook='deactivated_at' class='deactivated-at'>
+        <%= f.label :deactivated_at %>:&nbsp;
+        <%= @gift_card.formatted_deactivated_at %>
+      </div>
+    <% end %>
+  </fieldset>
+
+  <div class='row'>
+    <div class='col-3'>
+      <div data-hook='recipient_name' class='field'>
+        <%= f.label :recipient_name %>
+        <%= f.text_field :recipient_name, class: 'fullwidth' %>
+      </div>
+    </div>
+
+    <div class='col-3'>
+      <div data-hook='recipient_email' class='field'>
+        <%= f.label :recipient_email %>
+        <%= f.text_field :recipient_email, class: 'fullwidth' %>
+      </div>
+    </div>
+
+    <div class='col-3'>
+      <div data-hook='purchaser_name' class='field'>
+        <%= f.label :purchaser_name %>
+        <%= f.text_field :purchaser_name, class: 'fullwidth' %>
+      </div>
+    </div>
+
+    <div class='col-3'>
+      <div data-hook='gift_message' class='field'>
+        <%= f.label :gift_message %>
+        <%= f.text_area :gift_message, class: 'fullwidth', maxlength: '140' %>
+      </div>
+    </div>
+  </div>
+
+  <% if !@gift_card.sent_at %>
+    <div class='row'>
+      <div class='col-12'>
+        <div data-hook='send_email_at' class='field'>
+          <%= f.label :send_email_at %>
+          <%= f.text_field :send_email_at, value: datepicker_field_value(@gift_card.send_email_at), class: 'datepicker' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
