@@ -9,10 +9,25 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with :truncation
   end
 
-  # Before each spec check if it is a Javascript test and switch between using database transactions or not where necessary.
+  # Before each spec check if it is a Javascript test and switch between
+  # using database transactions or not where necessary.
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
+  end
+
+  config.before(:each) do |example|
+    if RSpec.current_example.metadata[:js]
+      page.driver.browser.url_blacklist = ['http://fonts.googleapis.com']
+      DatabaseCleaner.strategy = :truncation
+    else
+      DatabaseCleaner.strategy = :transaction
+    end
+
+    DatabaseCleaner.start
+
+    Spree::Api::Config[:requires_authentication] = true
+    Spree::Config.reset
   end
 
   # After each spec clean the database.
@@ -24,13 +39,6 @@ RSpec.configure do |config|
     clear_enqueued_jobs
     clear_performed_jobs
   end
-
-  # config.before do
-  #   Rails.cache.clear
-  #   if RSpec.current_example.metadata[:js] && page.driver.browser.respond_to?(:url_blacklist)
-  #     page.driver.browser.url_blacklist = ['http://fonts.googleapis.com']
-  #   end
-  # end
 
   config.after(:each, type: :feature) do |example|
     missing_translations = page.body.scan(/translation missing: #{I18n.locale}\.(.*?)[\s<\"&]/)

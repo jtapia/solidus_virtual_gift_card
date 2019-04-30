@@ -17,6 +17,7 @@ en:
   spree:
     immediately: "Immediately"
     admin:
+      order_number: "Order Number"
       gift_cards:
         convert_product_label: "Turn this product into a gift card?"
         deactivate: "Deactivate"
@@ -57,6 +58,8 @@ en:
           unable_to_reimburse_gift_card: "Unable to reimburse gift card"
       tab:
         gift_cards: "Gift Cards"
+      store_credits:
+        gift_card_originator: "Gift Card - Order #%{order_number}"
     gift_card_mailer:
       gift_card_email:
         dear_customer: "Dear customer"
