@@ -10,6 +10,8 @@ es-MX:
         recipient_email: "Email del Destinatario"
         gift_message: "Mensaje de la Tarjeta de Regalo"
         purchaser_name: "Nombre del comprador"
+        sent_email_at: "Enviar correo electrónico a"
+        sent_at: "Enviado a"
     models:
       spree/virtual_gift_card:
         one: "Tarjeta de Regalo"
@@ -18,6 +20,7 @@ es-MX:
     immediately: "Inmediatamente"
     admin:
       order_number: "Número de Orden"
+      back_to_order_details: "Volver a Detalles del pedido"
       gift_cards:
         deactivate: "Desactivar"
         deactivate: "Desactivado"
@@ -31,6 +34,7 @@ es-MX:
         email_last_sent_at: "Email enviado por última vez"
         gift_card: "Tarjeta de Regalo"
         gift_card_details: "Detalles de la Tarjeta de Regalo"
+        gift_cards_details: "Detalles de las Tarjetas de Regalo"
         gift_card_originator: "Tarjeta de Regalo - Orden #%{order_number}"
         gift_card_updated: "Tarjeta de Regalo actualizada!"
         gift_message: "Mensaje de la Tarjeta de Regalo"
